@@ -1,23 +1,20 @@
-export default ((length) => {
-  const health = [];
+export default ((name, length) => {
+  let health = length;
 
-  for (let i = 0; i < length; i++) {
-    health.push(false);
-  }
+  const getName = () => name;
+
+  const getLength = () => length;
 
   const getHealth = () => health;
 
   const hit = (position) => {
-    health[position] = true;
+    health--;
   };
 
   const isSunk = () => {
-    let isSunk = true;
-    for (let i = 0; i < health.length; i++) {
-      if (health[i] == false) return false;
-    }
-    return isSunk;
+    if (health <= 0) return true;
+    else return false;
   };
 
-  return { hit, isSunk, getHealth };
+  return { getName, getLength, hit, isSunk, getHealth };
 });

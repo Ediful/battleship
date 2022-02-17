@@ -1,37 +1,44 @@
 export default (() => {
-    let tileOccupiedBy = [];
-    let tileHit = [];
+  const tileOccupiedBy = [];
+  const tileHit = [];
 
-    for (let i = 0; i < 100; i++) {
-        tileOccupiedBy.push("");
-        tileHit.push(false);
+  for (let i = 0; i < 100; i += 1) {
+    tileOccupiedBy.push(null);
+    tileHit.push(false);
+  }
+
+  const getTilesOccupiedBy = () => tileOccupiedBy;
+
+  const getTilesHit = () => tileHit;
+
+  // TODO: Constrain where ships can be placed
+  const placeShip = (ship, x, y, isHorizontal) => {
+    if (isHorizontal) {
+      for (let i = 0; i < ship.getLength(); i += 1) {
+        tileOccupiedBy[(i + x) + (y * 10)] = ship;
+      }
+    } else if (!isHorizontal) {
+      for (let i = 0; i < ship.getLength(); i += 1) {
+        tileOccupiedBy[(x + (y * 10)) + (10 * i)] = ship;
+      }
     }
+  };
 
-    const getTilesOccupiedBy = () => tileOccupiedBy;
+  const receiveAttack = (x, y) => {
+    if (tileOccupiedBy[x + (10 * y)] != null) {
+      tileOccupiedBy[x + (10 * y)].hit();
+      tileOccupiedBy[x + (10 * y)] = null;
+    } else {
+      tileHit[x + (10 * y)] = true;
+    }
+  };
 
-    const placeShip = (ship, x, y, isHorizontal) => {
-        if (isHorizontal) {
-            for (let i = 0; i < ship.getLength(); i++) {
-                tileOccupiedBy[(i + x) + (y * 10)] = ship.getName();
-            }
-        }
-        else if (!isHorizontal) {
-            for (let i = 0; i < ship.getLength(); i++) {
-                tileOccupiedBy[(x + (y * 10)) + (10 * i)] = ship.getName();
-            }
-        }
-    };
+  const allShipsSunk = () => {
+    if (tileOccupiedBy.every((e) => e == null)) return true;
+    return false;
+  };
 
-    const receiveAttack = (x, y) => {
-        if (tileOccupiedBy[x + (10 * y)] != "") {
-            // find ship in current spot
-            // call hit method on ship
-        };
-    };
-
-    const allShipsSunk = () => {
-
-    };
-
-    return { getTilesOccupiedBy, placeShip };
-})();
+  return {
+    getTilesOccupiedBy, placeShip, receiveAttack, getTilesHit, allShipsSunk,
+  };
+});

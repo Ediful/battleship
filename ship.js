@@ -1,20 +1,20 @@
-export default ((name, length) => {
+export default ((length) => {
   let health = length;
-
-  const getName = () => name;
 
   const getLength = () => length;
 
   const getHealth = () => health;
 
-  const hit = (position) => {
-    health--;
+  const hit = () => {
+    health -= 1;
   };
 
   const isSunk = () => {
     if (health <= 0) return true;
-    else return false;
+    return false;
   };
 
-  return { getName, getLength, hit, isSunk, getHealth };
+  return {
+    getLength, hit, isSunk, getHealth,
+  };
 });

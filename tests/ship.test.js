@@ -1,4 +1,4 @@
-import ship from './ship';
+import ship from '../src/ship';
 
 test('Get Ship Length', () => {
   const ship1 = ship(3);

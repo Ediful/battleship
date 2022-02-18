@@ -1,5 +1,5 @@
-import ship from './ship';
-import gameboard from './gameboard';
+import ship from '../src/ship';
+import gameboard from '../src/gameboard';
 
 test('Place Ship on Gameboard Horizontally', () => {
   const gameboard1 = gameboard();

@@ -17,16 +17,16 @@
     "url": "https://github.com/Ediful/battleship/issues"
   },
   "homepage": "https://github.com/Ediful/battleship#readme",
-  "dependencies": {
-    "@babel/core": "^7.17.3",
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
     "@babel/preset-env": "^7.16.11",
     "babel-jest": "^27.5.1",
-    "eslint-plugin-jest": "^26.1.1",
-    "jest": "^27.5.1"
-  },
-  "devDependencies": {
     "eslint": "^8.9.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.25.4"
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.1",
+    "jest": "^27.5.1",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2"
   }
 }

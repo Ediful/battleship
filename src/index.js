@@ -1,5 +1,6 @@
 import player from './player';
 import gameboard from './gameboard';
+import ui from './ui';
 
 window.addEventListener('load', () => {
   const player1 = player();
@@ -9,4 +10,7 @@ window.addEventListener('load', () => {
   const enemyBoard = gameboard();
 
   document.querySelector('h2').textContent = 'Place your ships';
+
+  const disa = ui();
+  disa.placeShip(5);
 });

@@ -1,52 +1,34 @@
 export default (() => {
-  const placeShipHighlight = () => {
-    const boardItem = document.getElementsByClassName('board-item');
+  const boardItemEvent = (type) => {
+    const boardItem = document.getElementsByClassName('board-item player-board');
 
     Array.from(boardItem).forEach((item) => {
-      item.addEventListener('mouseenter', () => {
+      item.addEventListener(type, () => {
         const itemPos = Array.from(item.parentNode.children).indexOf(item);
-        for (let i = 0; i < 5; i += 1) {
-          boardItem[itemPos + i].classList.add('ship-highlight');
+        if (type === 'click') {
+          // place ship on board
         }
-      });
-    });
-
-    Array.from(boardItem).forEach((item) => {
-      item.addEventListener('mouseout', () => {
-        const itemPos = Array.from(item.parentNode.children).indexOf(item);
-        for (let i = 0; i < 5; i += 1) {
-          boardItem[itemPos + i].classList.remove('ship-highlight');
+        if (type === 'mouseenter' || type === 'mouseout') {
+          // horizontal highlight
+          if (document.contains(boardItem[itemPos + 4])) {
+            for (let i = 0; i < 5; i += 1) {
+              boardItem[itemPos + i].classList.toggle('ship-highlight');
+            }
+          }
+          // [TODO] vertical highlight
         }
       });
     });
   };
 
   const placeShip = () => {
-    const boardItem = document.getElementsByClassName('board-item');
-
-    placeShipHighlight();
-
-    Array.from(boardItem).forEach((item) => {
-      item.addEventListener('click', () => {
-        const itemPos = Array.from(item.parentNode.children).indexOf(item);
-        console.log(itemPos);
-      });
-    });
+    boardItemEvent('mouseenter');
+    boardItemEvent('mouseout');
+    boardItemEvent('click');
   };
 
-  const boardItemEvent = (event) => {
-    const boardItem = document.getElementsByClassName('board-item');
-
-    Array.from(boardItem).forEach((item) => {
-      item.addEventListener('mouseout', () => {
-        const itemPos = Array.from(item.parentNode.children).indexOf(item);
-        for (let i = 0; i < 5; i += 1) {
-          boardItem[itemPos + i].classList.remove('ship-highlight');
-        }
-      });
-    });
-  };
-
+  // let's try to keep these other functions as seperate as possible from
+  // the previous mess
   const drawShips = () => {
 
   };

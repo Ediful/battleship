@@ -1,14 +1,14 @@
-import player from './player';
-import gameboard from './gameboard';
+// import player from './player';
+// import gameboard from './gameboard';
 import ui from './ui';
 
-const player1 = player();
-const playerBoard = gameboard();
+// const player1 = player();
+// const playerBoard = gameboard();
 
-const enemy = player();
-const enemyBoard = gameboard();
+// const enemy = player();
+// const enemyBoard = gameboard();
 
 document.querySelector('h2').textContent = 'Place your ships';
 
 const disa = ui();
-disa.placeShip(5);
+disa.placeShip();

@@ -9,6 +9,9 @@ import ui from './ui';
 // const enemyBoard = gameboard();
 
 document.querySelector('h2').textContent = 'Place your ships';
+const verticalCB = document.createElement('input');
+verticalCB.type = 'checkbox';
+document.querySelector('h2').appendChild(verticalCB);
 
 const disa = ui();
-disa.placeShip();
+disa.placeShip(2);

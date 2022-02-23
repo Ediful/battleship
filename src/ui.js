@@ -14,7 +14,6 @@ export default (() => {
         }
 
         // ship placement highlight
-        // [TODO] ship size as parameter
         if (type === 'mouseenter' || type === 'mouseout') {
           if (!isVertical && itemPos % 10 <= 10 - length) {
             for (let i = 0; i < length; i += 1) {

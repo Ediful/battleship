@@ -1,9 +1,10 @@
 // import player from './player';
-// import gameboard from './gameboard';
+import gameboard from './gameboard';
+import ship from './ship';
 import ui from './ui';
 
 // const player1 = player();
-// const playerBoard = gameboard();
+const playerBoard = gameboard();
 
 // const enemy = player();
 // const enemyBoard = gameboard();
@@ -14,4 +15,5 @@ verticalCB.type = 'checkbox';
 document.querySelector('h2').appendChild(verticalCB);
 
 const disa = ui();
-disa.placeShip(2);
+const boat = ship(2);
+disa.placeShip(boat, playerBoard);

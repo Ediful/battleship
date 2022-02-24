@@ -1,3 +1,5 @@
+import ship from './ship'
+
 export default (() => {
   const tileOccupiedBy = [];
   const tileHit = [];
@@ -11,7 +13,6 @@ export default (() => {
 
   const getTilesHit = () => tileHit;
 
-  // TODO: Constrain where ships can be placed
   const placeShip = (ship, x, y, isHorizontal) => {
     if (isHorizontal) {
       for (let i = 0; i < ship.getLength(); i += 1) {

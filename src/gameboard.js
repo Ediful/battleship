@@ -1,5 +1,3 @@
-import ship from './ship'
-
 export default (() => {
   const tileOccupiedBy = [];
   const tileHit = [];

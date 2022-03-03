@@ -1,4 +1,19 @@
 export default (() => {
+  // let's try to keep these other functions as seperate as possible from
+  // the previous mess
+  const drawShips = (gameboard) => {
+    const boardItem = document.getElementsByClassName('board-item player-board');
+
+    Array.from(boardItem).forEach((item) => {
+      const itemPos = Array.from(item.parentNode.children).indexOf(item);
+
+      if (gameboard.getTilesOccupiedBy()[itemPos] != null) {
+        // eslint-disable-next-line no-param-reassign
+        item.style.backgroundColor = 'pink';
+      }
+    });
+  };
+
   const boardItemEvent = (type, ship, gameboard) => {
     const boardItem = document.getElementsByClassName('board-item player-board');
     const isVerticalCB = document.querySelector('input');
@@ -11,7 +26,7 @@ export default (() => {
         // ship placement
         // [TODO] implement valid spot checking
         if (type === 'click') {
-          gameboard.placeShip(ship, (itemPos%10), Math.floor(itemPos/10), !isVertical);
+          gameboard.placeShip(ship, (itemPos % 10), Math.floor(itemPos / 10), !isVertical);
           drawShips(gameboard);
         }
 
@@ -38,20 +53,6 @@ export default (() => {
     boardItemEvent('mouseenter', ship);
     boardItemEvent('mouseout', ship);
     boardItemEvent('click', ship, gameboard);
-  };
-
-  // let's try to keep these other functions as seperate as possible from
-  // the previous mess
-  const drawShips = (gameboard) => {
-    const boardItem = document.getElementsByClassName('board-item player-board');
-    
-    Array.from(boardItem).forEach((item) => {
-      const itemPos = Array.from(item.parentNode.children).indexOf(item);
-
-      if (gameboard.getTilesOccupiedBy()[itemPos] != null){
-        item.style.backgroundColor = "pink";
-      }
-    });
   };
 
   const drawHits = () => {

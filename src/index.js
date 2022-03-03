@@ -14,6 +14,12 @@ const verticalCB = document.createElement('input');
 verticalCB.type = 'checkbox';
 document.querySelector('h2').appendChild(verticalCB);
 
-const disa = ui();
-const boat = ship(2);
-disa.placeShip(boat, playerBoard);
+const userInterface = ui();
+const destroyer = ship(2);
+const submarine = ship(3);
+const cruiser = ship(3);
+const battleship = ship(4);
+const carrier = ship(5);
+
+let boatPlaced = false;
+boatPlaced = userInterface.placeShip(destroyer, playerBoard);

@@ -33,6 +33,7 @@ export default (() => {
     });
   };
 
+  // [TODO] Uncouple this for state machine
   const placeShip = (ship, gameboard) => {
     boardItemEvent('mouseenter', ship);
     boardItemEvent('mouseout', ship);

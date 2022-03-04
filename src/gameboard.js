@@ -27,9 +27,8 @@ export default (() => {
     if (tileOccupiedBy[x + (10 * y)] != null) {
       tileOccupiedBy[x + (10 * y)].hit();
       tileOccupiedBy[x + (10 * y)] = null;
-    } else {
-      tileHit[x + (10 * y)] = true;
     }
+    tileHit[x + (10 * y)] = true;
   };
 
   const allShipsSunk = () => {

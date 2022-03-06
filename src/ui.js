@@ -25,7 +25,6 @@ export default ((player1, player2, playerBoard, enemyBoard) => {
       }
       if (playerBoard.getTilesHit()[i] === true) {
         const tile = document.querySelectorAll(`.player-board:nth-child(${i + 1})`);
-        // do another check for ship hit or miss
         if (playerBoardInitialState[i] != null) {
           tile[0].style.backgroundColor = 'red';
         } else tile[0].style.backgroundColor = 'orange';
@@ -33,7 +32,15 @@ export default ((player1, player2, playerBoard, enemyBoard) => {
     }
   };
 
-  const playerAttack = () => {
+  const attackPhase = () => {
+    while (document.getElementById('instructions').firstChild) {
+      document.getElementById('instructions').removeChild(document.getElementById('instructions').firstChild);
+    }
+
+    const instructions = document.createElement('h2');
+    instructions.textContent = 'Begin attack!';
+    document.getElementById('instructions').appendChild(instructions);
+
     const boardItem = document.getElementsByClassName('board-item enemy-board');
 
     Array.from(boardItem).forEach((item) => {
@@ -43,11 +50,17 @@ export default ((player1, player2, playerBoard, enemyBoard) => {
         player1.attack(enemyBoard, (itemPos % 10), Math.floor(itemPos / 10));
         player2.computerAttack(playerBoard);
         updateBoards();
+        if (enemyBoard.allShipsSunk() === true) {
+          document.querySelector('h2').textContent = 'YOU WIN! Congratulations!';
+        }
+        if (playerBoard.allShipsSunk() === true) {
+          document.querySelector('h2').textContent = 'GAME OVER! Better luck next time!';
+        }
       });
     });
   };
 
-  const placeShip = (ships) => {
+  const placeShipPhase = (ships) => {
     const boardItem = document.getElementsByClassName('board-item player-board');
     const isVerticalCB = document.querySelector('input');
 
@@ -97,7 +110,7 @@ export default ((player1, player2, playerBoard, enemyBoard) => {
           k += 1;
           if (k === 5) {
             playerBoardInitialState = [...playerBoard.getTilesOccupiedBy()];
-            playerAttack();
+            attackPhase();
           }
         }
       });
@@ -105,6 +118,6 @@ export default ((player1, player2, playerBoard, enemyBoard) => {
   };
 
   return {
-    placeShip,
+    placeShipPhase,
   };
 });

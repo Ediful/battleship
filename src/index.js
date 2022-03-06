@@ -36,10 +36,10 @@ const enemyCruiser = ship(3);
 const enemyBattleship = ship(4);
 const enemyCarrier = ship(5);
 
-enemyBoard.placeShip(enemyDestroyer, 0, 0, true);
-enemyBoard.placeShip(enemySubmarine, 0, 0, true);
-enemyBoard.placeShip(enemyCruiser, 0, 0, true);
-enemyBoard.placeShip(enemyBattleship, 0, 0, true);
+enemyBoard.placeShip(enemyDestroyer, 9, 5, false);
+enemyBoard.placeShip(enemySubmarine, 3, 4, true);
+enemyBoard.placeShip(enemyCruiser, 6, 7, false);
+enemyBoard.placeShip(enemyBattleship, 2, 6, true);
 enemyBoard.placeShip(enemyCarrier, 0, 0, true);
 
 const userInterface = ui(player1, player2, playerBoard, enemyBoard);

@@ -10,7 +10,7 @@ export default ((player1, player2, playerBoard, enemyBoard) => {
 
       if (gameboard.getTilesOccupiedBy()[itemPos] != null) {
         // eslint-disable-next-line no-param-reassign
-        item.style.backgroundColor = 'pink';
+        item.style.backgroundColor = 'grey';
       }
     });
   };
@@ -20,14 +20,14 @@ export default ((player1, player2, playerBoard, enemyBoard) => {
       if (enemyBoard.getTilesHit()[i] === true) {
         const tile = document.querySelectorAll(`.enemy-board:nth-child(${i + 1})`);
         if (enemyBoardInitialState[i] != null) {
-          tile[0].style.backgroundColor = 'red';
-        } else tile[0].style.backgroundColor = 'orange';
+          tile[0].style.backgroundColor = 'Tomato';
+        } else tile[0].style.backgroundColor = 'SteelBlue';
       }
       if (playerBoard.getTilesHit()[i] === true) {
         const tile = document.querySelectorAll(`.player-board:nth-child(${i + 1})`);
         if (playerBoardInitialState[i] != null) {
-          tile[0].style.backgroundColor = 'red';
-        } else tile[0].style.backgroundColor = 'orange';
+          tile[0].style.backgroundColor = 'Tomato';
+        } else tile[0].style.backgroundColor = 'SteelBlue';
       }
     }
   };

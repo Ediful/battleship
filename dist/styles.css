@@ -1,11 +1,23 @@
 #container {
-  width: 100vw;
   height: 100vh;
   background-color: #DDD;
+  text-align: center;
 }
 
-h1 {
+h1{
   margin-top: 0px;
+  padding-top: 20px;
+}
+
+#instructions {
+  margin: 20px;
+  padding-top: 10px;
+  height: 80px;
+}
+
+label {
+  font-size: larger;
+  font-weight: 600;
 }
 
 .board {
@@ -21,9 +33,9 @@ h1 {
 }
 
 .ship-highlight {
-  background-color: grey;
+  background-color: lightgreen;
 }
 
 .invalid-location {
-  background-color: maroon;
+  background-color: lightcoral;
 }
